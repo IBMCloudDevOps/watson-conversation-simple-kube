@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: bot-son
-        image: adamkingit/watson-conversation-simple
+        image: adamkingit/watson-conversation-simple-kube
         resources:
           requests:
             cpu: 100m
