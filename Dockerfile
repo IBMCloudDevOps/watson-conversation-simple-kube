@@ -1,7 +1,9 @@
 FROM node
 EXPOSE 3000
 
-RUN apt-get install jq
+RUN apt-get update && \
+    apt-get -y install jq && \
+    apt-get clean
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
