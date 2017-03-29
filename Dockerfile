@@ -1,6 +1,8 @@
 FROM node
 EXPOSE 3000
 
+RUN apt-get install jq
+
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
@@ -9,4 +11,4 @@ RUN curl -L  https://github.com/watson-developer-cloud/conversation-simple/archi
 
 RUN npm install --production && npm cache clean
 
-CMD [ "npm", "start"]
+CMD [ "bash", "-c ", "CONVERSATION_PASSWORD=$(jq -n 'env.BINDING|fromjson.password') && CONVERSATION_USERNAME=$(jq -n 'env.BINDING|fromjson.username') && npm start"]

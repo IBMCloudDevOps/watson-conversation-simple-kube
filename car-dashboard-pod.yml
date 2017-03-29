@@ -41,7 +41,7 @@ spec:
               secretKeyRef:
                 name: car-dashboard-config
                 key: workspace_id
-          - name: conversation
+          - name: BINDING
             valueFrom:
               secretKeyRef:
                 name: car-conversation-service
