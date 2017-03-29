@@ -1,0 +1,48 @@
+---
+# Service to expose frontend
+apiVersion: v1
+kind: Service
+metadata:
+  name: bot-son
+  labels:
+    app: bot-son
+    tier: frontend
+spec:
+  type: NodePort
+  ports:
+  - port: 3000
+  selector:
+    app: bot-son
+    tier: frontend
+---
+# Application to deploy
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bot-son
+spec:
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: bot-son
+        tier: frontend
+    spec:
+      containers:
+      - name: bot-son
+        image: adamkingit/watson-conversation-simple
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        env:
+          - name: WORKSPACE_ID
+            valueFrom:
+              secretKeyRef:
+                name: car-dashboard-config
+                key: workspace_id
+          - name: conversation
+            valueFrom:
+              secretKeyRef:
+                name: car-conversation-service
+                key: binding
