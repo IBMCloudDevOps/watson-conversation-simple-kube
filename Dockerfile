@@ -13,4 +13,4 @@ RUN curl -L  https://github.com/watson-developer-cloud/conversation-simple/archi
 
 RUN npm install --production && npm cache clean
 
-CMD [ "bash", "-c ", "CONVERSATION_PASSWORD=$(jq -n 'env.BINDING|fromjson.password') && CONVERSATION_USERNAME=$(jq -n 'env.BINDING|fromjson.username') && npm start"]
+CMD [ "bash", "-c", "CONVERSATION_PASSWORD=$(echo "$BINDING" | jq '.password') && CONVERSATION_USERNAME=$(echo "$BINDING" | jq '.username') && npm start"]
