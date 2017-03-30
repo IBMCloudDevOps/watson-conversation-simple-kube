@@ -44,5 +44,5 @@ spec:
           - name: BINDING
             valueFrom:
               secretKeyRef:
-                name: car-conversation-service
+                name: binding-car-conversation-service
                 key: binding
