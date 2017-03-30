@@ -41,8 +41,8 @@ spec:
               configMapKeyRef:
                 name: car-dashboard-config
                 key: workspace_id
-          - name: BINDING
+          - name: CONVERSATION_SERVICE_BINDING
             valueFrom:
               secretKeyRef:
-                name: binding-car-conversation-service
+                name: binding-conversation-service-car
                 key: binding
