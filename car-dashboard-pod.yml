@@ -38,7 +38,7 @@ spec:
         env:
           - name: WORKSPACE_ID
             valueFrom:
-              secretKeyRef:
+              configMapKeyRef:
                 name: car-dashboard-config
                 key: workspace_id
           - name: BINDING
