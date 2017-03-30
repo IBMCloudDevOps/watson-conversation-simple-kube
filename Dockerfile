@@ -15,4 +15,4 @@ RUN npm install --production && npm cache clean
 
 COPY *.sh /usr/src/app
 
-CMD [ "run-server.sh"]
+CMD [ "/usr/src/app/run-server.sh"]
